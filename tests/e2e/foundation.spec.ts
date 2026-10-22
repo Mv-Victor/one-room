@@ -1,0 +1,68 @@
+import { test, expect, _electron as electron } from '@playwright/test';
+import { mkdtemp, rm, mkdir } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+
+test('desktop bridge, saved scope, restart and independent text consent', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'one-room-e2e-'));
+  const launch = () => electron.launch({ args: [process.cwd()], env: { ...process.env, ONE_ROOM_USER_DATA: root } });
+  let application = await launch();
+  const errors: string[] = [];
+  try {
+    let page = await application.firstWindow();
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.waitForFunction(() => window.innerWidth === 1440 && window.innerHeight === 1000);
+    page.on('pageerror', error => errors.push(error.message));
+    await expect(page.getByText('本地已连接')).toBeVisible();
+    const status = await page.evaluate(() => window.oneRoom!.app.getStatus({}));
+    expect(status.ok).toBe(true);
+    if (!status.ok) throw new Error('Desktop status failed.');
+    expect(status.data.capture.state).not.toBe('running');
+    await mkdir('artifacts/acceptance', { recursive: true });
+    await page.screenshot({ path: 'artifacts/acceptance/desktop-empty.png', fullPage: true, scale: 'css' });
+    await page.getByRole('button', { name: '设置', exact: true }).click();
+    await page.getByLabel('允许的应用 Bundle ID').fill('com.apple.Safari');
+    await page.getByLabel('排除的应用 Bundle ID').fill('com.apple.systempreferences');
+    await page.getByRole('button', { name: '保存范围', exact: true }).click();
+    await expect(page.getByRole('status')).toHaveText('应用范围已保存');
+    const consentSwitch = page.getByRole('switch', { name: '后台文字分析', exact: true });
+    await expect(consentSwitch).not.toBeChecked();
+    await page.getByLabel('授权应用 Bundle ID', { exact: true }).fill('com.apple.Safari');
+    await expect(consentSwitch).toBeDisabled();
+    await page.getByRole('checkbox', { name: '确认发送授权范围的提取文字', exact: true }).check();
+    await consentSwitch.click();
+    await expect(page.getByRole('status')).toHaveText('后台文字授权已保存');
+    await expect(consentSwitch).toBeChecked();
+    const modelConfig = await page.evaluate(() => window.oneRoom!.model.getConfig({}));
+    expect(modelConfig.ok && modelConfig.data.hasCredential).toBe(false);
+    const captureAfterConsent = await page.evaluate(() => window.oneRoom!.app.getStatus({}));
+    expect(captureAfterConsent.ok && captureAfterConsent.data.capture.state).not.toBe('running');
+    await page.screenshot({ path: 'artifacts/acceptance/desktop-settings.png', fullPage: true, scale: 'css' });
+    await application.close();
+    application = await launch();
+    page = await application.firstWindow();
+    await expect(page.getByText('本地已连接')).toBeVisible();
+    await page.getByRole('button', { name: '设置', exact: true }).click();
+    await expect(page.getByLabel('允许的应用 Bundle ID')).toHaveValue('com.apple.Safari');
+    await expect(page.getByLabel('排除的应用 Bundle ID')).toHaveValue('com.apple.systempreferences');
+    await expect(page.getByRole('switch', { name: '后台文字分析', exact: true })).toBeChecked();
+    const settings = await page.evaluate(() => window.oneRoom!.settings.get({}));
+    expect(settings.ok && settings.data.textConsent.enabled).toBe(true);
+    await page.getByRole('switch', { name: '后台文字分析', exact: true }).click();
+    await expect(page.getByRole('status')).toHaveText('后台文字分析已关闭');
+    await expect(page.getByRole('switch', { name: '后台文字分析', exact: true })).not.toBeChecked();
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.waitForFunction(() => window.innerWidth === 390 && window.innerHeight === 844);
+    await page.screenshot({ path: 'artifacts/acceptance/desktop-narrow.png', fullPage: true, scale: 'css' });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    await page.getByRole('button', { name: '时间线', exact: true }).click();
+    await page.locator('.activity-review-drawer > summary').click();
+    await expect(page.getByRole('heading', { name: '活动校正', exact: true })).toBeVisible();
+    await page.screenshot({ path: 'artifacts/acceptance/desktop-narrow-timeline.png', fullPage: true, scale: 'css' });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    expect(errors).toEqual([]);
+  } finally {
+    await application.close();
+    await rm(root, { recursive: true, force: true });
+  }
+});

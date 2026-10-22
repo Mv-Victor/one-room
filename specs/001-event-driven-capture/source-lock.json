@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "researchDate": "2026-10-15",
+  "projects": [
+    {
+      "name": "screenpipe",
+      "repository": "https://github.com/screenpipe/screenpipe",
+      "tag": "v2.2.243",
+      "commit": "1b3e4186ec5a624b95a581c7187c1d48284bea9a",
+      "license": "MIT except ee/",
+      "decision": "MIT research excerpts; selected adaptation candidates; no Rust runtime",
+      "files": [
+        {
+          "path": "LICENSE.md",
+          "sha256": "688c84ab8bed8b9b60d75e8486eb9e19e3e1f049bf6f9c24f1c5e3fad86777e0",
+          "lineCount": 28
+        },
+        {
+          "path": "crates/screenpipe-engine/src/event_driven_capture.rs",
+          "sha256": "a3ebba9cb896b3ace9f34d917f3cf1481945d1a5d723a7abe816c850cc6bcb79",
+          "lineCount": 965
+        },
+        {
+          "path": "crates/screenpipe-engine/src/paired_capture.rs",
+          "sha256": "c9b1bb73dc5dc2c34fa05f5a115be56467f0bf0b7fcfd74ab2de1a98bdcf28de",
+          "lineCount": 1012
+        },
+        {
+          "path": "crates/screenpipe-a11y/src/tree/macos.rs",
+          "sha256": "8b207829f9e485e710052e965ab69b6dad53959dfd6b4e041888c7c8b5488574",
+          "lineCount": 876
+        },
+        {
+          "path": "crates/screenpipe-a11y/src/tree/mod.rs",
+          "sha256": "530acc6d07c1ddfd36a456e24644e00a8cc9977ef1c5cb53012f05366774bc3b",
+          "lineCount": 455
+        },
+        {
+          "path": "apps/screenpipe-app-tauri/components/rewind/hooks/use-scroll-zoom.ts",
+          "sha256": "c6dbc533f934f08d74a1347b68bd9ecd3e23c5fcfff2662add77fdaaa7a1c81d",
+          "lineCount": 384
+        },
+        {
+          "path": "apps/screenpipe-app-tauri/components/rewind/hooks/use-frame-loading.ts",
+          "sha256": "3223f4a42d6ec1167d4ac5739eac0c2c5d0c8788f254b80d8469faff7f3e3c68",
+          "lineCount": 520
+        },
+        {
+          "path": "apps/screenpipe-app-tauri/components/rewind/timeline/timeline.tsx",
+          "sha256": "2210dd67af4414e96b0aa0dd55ac112f6edc0bbba758fee30f268128e37da25e",
+          "lineCount": 1744
+        },
+        {
+          "path": "apps/screenpipe-app-tauri/components/rewind/timeline/timeline-controls.tsx",
+          "sha256": "122c5bf7a350ada9729b43c1727618ceb0a4b1232b4b4a4d86c061823c980523",
+          "lineCount": 356
+        },
+        {
+          "path": "crates/screenpipe-core/src/agents/mod.rs",
+          "sha256": "d9d8b7fcb7e4fdc8600cbc622c8135d7cdcde277786918d7d8f0ea6654c53ab6",
+          "lineCount": 114
+        },
+        {
+          "path": "apps/screenpipe-app-tauri/components/settings/connections-section.tsx",
+          "sha256": "7f34d4fa21f11d5967c10eb4df300095e9921e14308c96bd79166c96a1cd61be",
+          "lineCount": 1275
+        }
+      ]
+    },
+    {
+      "name": "memorylane",
+      "repository": "https://github.com/deusXmachina-dev/memorylane",
+      "tag": "v1.5.10",
+      "commit": "f3157d54524e647d32f7decd186ee00cac9f72d5",
+      "license": "GPL-3.0-or-later",
+      "decision": "User authorized private-use GPL source adaptation on 2026-10-15; preserve license, source commit and modification notices",
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+          "lineCount": 675
+        },
+        {
+          "path": "package.json",
+          "sha256": "2d2214786a2c33c4c9a89df32f439e4dadf734b13decaaaf67e1028482fb93eb",
+          "lineCount": 146
+        },
+        {
+          "path": "scripts/build-swift.sh",
+          "sha256": "72964e625a19093f3676f3c3d19acdf608b57faf7acf52820c06f2dd7c782dd1",
+          "lineCount": 31
+        },
+        {
+          "path": "src/main/recorder/native-screenshot.ts",
+          "sha256": "11c0447afae3f62cfad3e97d4d9b9a1929ddb54dc38a3f25a559ed9fd5ea5457",
+          "lineCount": 266
+        },
+        {
+          "path": "src/main/recorder/swift/app-watcher.swift",
+          "sha256": "79b22dcac42bc28ea1f3e16adca5b98e58e1f60b35aa64e15d26a450cfb9f79e",
+          "lineCount": 465
+        },
+        {
+          "path": "src/main/recorder/swift/screenshot.swift",
+          "sha256": "9135f79468feeaa2b4f79052fd77442237b98aa5cb28e805f02d2781bfea4443",
+          "lineCount": 426
+        },
+        {
+          "path": "src/main/processor/swift/ocr.swift",
+          "sha256": "4d1b809e38818eaca1314c18d970e08a1aa3a168835c42e0b84f8d0e697e3626",
+          "lineCount": 54
+        },
+        {
+          "path": "src/main/activity/pipeline-harness.ts",
+          "sha256": "12d1ed8bf06694acad03e54438ffe50b7499a85de5ddcde71e35cbd8cc8e2c95",
+          "lineCount": 211
+        },
+        {
+          "path": "src/main/activity/event-capturer.ts",
+          "sha256": "fa1b0969fca65cf7ec3b697c75bd5ac956db61ddd7a7dd615f921b933d57fab8",
+          "lineCount": 342
+        },
+        {
+          "path": "src/main/activity/activity-producer.ts",
+          "sha256": "fd84ddb653aa624fec23bc7a170bfaa0d853658b1a53b0f2549d0198d1053f76",
+          "lineCount": 616
+        },
+        {
+          "path": "src/main/activity/activity-transformer.ts",
+          "sha256": "bfd2726b54c3d233aabdb751e7eef860e3a23aa1c76996e198a2be35bf43422c",
+          "lineCount": 130
+        },
+        {
+          "path": "src/main/services/task-miner/run-detection.ts",
+          "sha256": "658bbb0189be58141ec40eb5baf34d92aadb985b581afa19efa2d1dafbf4999e",
+          "lineCount": 431
+        },
+        {
+          "path": "src/shared/constants.ts",
+          "sha256": "5084d1579b841c7b9a4c19e907b5e8272169527385b0339e7ca452ed21c94145",
+          "lineCount": 243
+        },
+        {
+          "path": "src/main/settings/vendor-credentials-manager.ts",
+          "sha256": "19aeb8f6685120f1401c8d771209a4c9a0d355187f5728805fc58c5b06c2911b",
+          "lineCount": 468
+        }
+      ]
+    }
+  ],
+  "excerpts": [
+    {
+      "id": "SP-1",
+      "project": "screenpipe",
+      "path": "crates/screenpipe-engine/src/event_driven_capture.rs",
+      "startLine": 94,
+      "endLine": 107,
+      "text": "impl Default for EventDrivenCaptureConfig {\n    fn default() -> Self {\n        Self {\n            min_capture_interval_ms: 200,\n            idle_capture_interval_ms: 30_000, // 30 seconds\n            typing_pause_delay_ms: 500,\n            scroll_stop_delay_ms: 300,\n            jpeg_quality: 80,\n            capture_on_click: true,\n            capture_on_clipboard: true,\n            visual_check_interval_ms: 3_000, // check every 3 seconds\n            visual_change_threshold: 0.05,   // ~5% difference triggers capture\n        }\n    }"
+    },
+    {
+      "id": "SP-2",
+      "project": "screenpipe",
+      "path": "crates/screenpipe-engine/src/paired_capture.rs",
+      "startLine": 125,
+      "endLine": 140,
+      "text": "    let has_accessibility_text = !app_prefers_ocr\n        && tree_snapshot\n            .map(|s| !s.text_content.is_empty())\n            .unwrap_or(false);\n\n    // Check if accessibility text is \"thin\" — the tree returned SOME text\n    // (toolbar, sidebar, browser chrome) but likely missed the main content.\n    // This happens with canvas-rendered apps (Google Docs, Figma, etc.)\n    // where the document body is invisible to the accessibility tree.\n    let a11y_is_thin = has_accessibility_text\n        && tree_snapshot\n            .map(|s| a11y_content_is_thin(s, ctx.window_name, ctx.browser_url, ctx.app_name))\n            .unwrap_or(false);\n\n    // Run OCR when: no a11y text, app prefers OCR, OR a11y text is thin (hybrid)\n    let (ocr_text, ocr_text_json) = if !has_accessibility_text || a11y_is_thin {"
+    },
+    {
+      "id": "SP-3",
+      "project": "screenpipe",
+      "path": "apps/screenpipe-app-tauri/components/rewind/hooks/use-frame-loading.ts",
+      "startLine": 314,
+      "endLine": 328,
+      "text": "\t// Snapshot frames: load directly via Tauri asset protocol (no HTTP/DB needed)\n\tuseEffect(() => {\n\t\tif (!isSnapshotFrame || snapshotFailed || !debouncedFrame?.filePath) return;\n\t\tlet cancelled = false;\n\t\tframeLoadStartTimeRef.current = performance.now();\n\n\t\tgetVideoUrl(debouncedFrame.filePath).then((url) => {\n\t\t\tif (cancelled || !url) return;\n\t\t\t// Preload before displaying to avoid flicker\n\t\t\tconst img = new Image();\n\t\t\timg.onload = () => {\n\t\t\t\tif (cancelled) return;\n\t\t\t\tsetSnapshotAssetUrl(url);\n\t\t\t\tsetIsLoading(false);\n\t\t\t\tsetHasError(false);"
+    }
+  ]
+}

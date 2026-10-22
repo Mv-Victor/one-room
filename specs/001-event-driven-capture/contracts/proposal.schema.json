@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:one-room:codex-proposal:1",
+  "title": "One Room Codex document proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "runId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+    },
+    "generation": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "skillVersionId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+      "description": "UUID primary key skill_versions.id of an immutable SkillVersion record, not a semver label."
+    },
+    "inputSnapshotHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "targetSnapshotHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "sectionRef": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,255}$",
+      "description": "Opaque reference to the app-resolved target byte range; never a path or model-selected heading."
+    },
+    "sourceRefs": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2000,
+      "description": "Source IDs from the confirmed input snapshot. Runtime rejects duplicate IDs.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      }
+    },
+    "replacementMarkdown": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2097152,
+      "description": "Replacement for the selected section only. Runtime also limits UTF-8 bytes and the complete resulting file to 2 MiB."
+    }
+  },
+  "required": [
+    "runId",
+    "generation",
+    "skillVersionId",
+    "inputSnapshotHash",
+    "targetSnapshotHash",
+    "sectionRef",
+    "sourceRefs",
+    "replacementMarkdown"
+  ]
+}

@@ -1,0 +1,36 @@
+appId: local.one-room.desktop
+productName: One Room
+directories:
+  output: release
+files:
+  - out/**
+  - '!out/main/smoke.js'
+  - '!out/main/nativeCaptureSmoke.js'
+  - '!out/main/navigationBenchmark.js'
+  - package.json
+  - LICENSE
+  - THIRD_PARTY_NOTICES.md
+extraResources:
+  - from: build/openadapt
+    to: openadapt
+    filter:
+      - '**/*'
+      - '!**/__pycache__/**'
+  - from: resources/native
+    to: native
+    filter:
+      - one-room-helper
+  - from: specs/001-event-driven-capture/licenses
+    to: licenses
+asarUnpack:
+  - node_modules/better-sqlite3/**
+mac:
+  category: public.app-category.productivity
+  target:
+    - target: dir
+      arch: arm64
+  identity: '-'
+  extendInfo:
+    NSHighResolutionCapable: true
+    NSScreenCaptureUsageDescription: One Room records only authorized visible windows for your local timeline.
+    NSAccessibilityUsageDescription: One Room uses visible window text for your local timeline.

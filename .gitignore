@@ -1,0 +1,81 @@
+# Dependencies
+node_modules/
+.pnp.*
+.yarn/*
+!.yarn/patches/
+!.yarn/plugins/
+!.yarn/releases/
+!.yarn/versions/
+
+# Logs and diagnostic reports
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Electron and frontend build output
+build/
+dist/
+dist-electron/
+out/
+release/
+.webpack/
+.vite/
+.electron-vite/
+*.tsbuildinfo
+
+# Caches and temporary files
+.build/
+DerivedData/
+*.swiftpm/
+resources/native/one-room-helper
+artifacts/
+.cache/
+.npm/
+.pnpm-store/
+.eslintcache
+.stylelintcache
+.parcel-cache/
+.turbo/
+tmp/
+temp/
+*.tmp
+
+# Test output
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+.desktop-acceptance/
+
+# Local environment variables
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Code signing credentials
+*.p12
+*.pfx
+*.key
+
+# Local tools and IDE settings
+.agents/
+.specify/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating system files
+.DS_Store
+._*
+.Spotlight-V100/
+.Trashes/
+Thumbs.db
+Desktop.ini
