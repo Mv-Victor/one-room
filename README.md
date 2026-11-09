@@ -4,6 +4,10 @@
 
 开源仓库：[Mv-Victor/one-room](https://github.com/Mv-Victor/one-room)。macOS Apple Silicon 测试包可从 [Releases](https://github.com/Mv-Victor/one-room/releases) 下载；测试包尚未做 Developer ID 签名与公证。
 
+## 项目演示
+
+[播放/下载 One Room 项目演示视频（约 90 秒，1080p）](https://github.com/Mv-Victor/one-room/releases/download/project-demo-2026-11-09/One.Room.tieAgent.1080p.mp4) · [查看演示 Release](https://github.com/Mv-Victor/one-room/releases/tag/project-demo-2026-11-09)
+
 ## 当前工程
 
 2026-10-15：A 的记录识别链路已实现：前台事件、指定窗口截图、先落事实、AX 正文优先/本地 Vision OCR 回退、独立文字授权、模型配置/安全凭证和活动校正。保留 Electron/React/TypeScript、小型 Swift helper 与单 SQLite worker。
