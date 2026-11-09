@@ -6,7 +6,9 @@
 
 ## 项目演示
 
-[播放/下载 One Room 项目演示视频（约 90 秒，1080p）](https://github.com/Mv-Victor/one-room/releases/download/project-demo-2026-11-09/One.Room.tieAgent.1080p.mp4) · [查看演示 Release](https://github.com/Mv-Victor/one-room/releases/tag/project-demo-2026-11-09)
+[![One Room 项目演示视频封面](docs/assets/one-room-demo-poster.jpg)](https://github.com/Mv-Victor/one-room/releases/download/project-demo-2026-11-09/One.Room.tieAgent.1080p.mp4)
+
+点击封面播放/下载项目演示视频（约 90 秒，1080p）。[查看演示 Release](https://github.com/Mv-Victor/one-room/releases/tag/project-demo-2026-11-09)
 
 ## 当前工程
 
